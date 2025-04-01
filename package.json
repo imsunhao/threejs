@@ -6,8 +6,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {},
-  "dependencies": {},
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2"
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/three": "^0.175.0"
   }
 }
