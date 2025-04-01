@@ -1,4 +1,8 @@
 import * as THREE from 'three';
+import {
+  OrbitControls
+} from 'three/addons/controls/OrbitControls.js';
+
 
 const scene = new THREE.Scene();
 
@@ -34,7 +38,14 @@ const scene = new THREE.Scene();
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(width, height)
 
-  renderer.render(scene, camera);
+  function render() {
+    renderer.render(scene, camera);
+    requestAnimationFrame(render);
+  }
 
   document.body.append(renderer.domElement);
+
+  render()
+
+  const controls = new OrbitControls(camera, renderer.domElement);
 }
