@@ -18,7 +18,7 @@ scene.add(axesHelper);
 const width = window.innerWidth;
 const height = window.innerHeight;
 
-const camera = new THREE.PerspectiveCamera(60, width / height, 1, 1000);
+const camera = new THREE.PerspectiveCamera(60, width / height, 1, 10000);
 camera.position.set(200, 200, 200);
 camera.lookAt(0, 0, 0);
 
