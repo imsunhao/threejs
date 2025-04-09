@@ -1,21 +1,15 @@
 import * as THREE from 'three';
 
-const geometry = new THREE.PlaneGeometry(100, 100);
+const loader = new THREE.TextureLoader();
+const texture = loader.load('./diqiu.awebp');
 
-const material = new THREE.MeshBasicMaterial(({
+const geometry = new THREE.SphereGeometry(200);
+
+const material = new THREE.MeshBasicMaterial({
   color: new THREE.Color('orange'),
-  transparent: true,
-  opacity: 0.5,
-}));
+  map: texture
+});
 
 const mesh = new THREE.Mesh(geometry, material);
-
-console.log(mesh);
-
-const color = mesh.material.color;
-console.log(color.getHexString());
-console.log(color.getStyle());
-color.setStyle('blue');
-
 
 export default mesh;
