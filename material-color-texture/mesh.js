@@ -1,18 +1,21 @@
 import * as THREE from 'three';
 
-const boxGeometry = new THREE.BoxGeometry(100, 100, 100);
+const geometry = new THREE.PlaneGeometry(100, 100);
 
-const geometry = new THREE.EdgesGeometry(boxGeometry);
-
-const material = new THREE.LineDashedMaterial(({
+const material = new THREE.MeshBasicMaterial(({
   color: new THREE.Color('orange'),
-  dashSize: 10,
-  gapSize: 10
+  transparent: true,
+  opacity: 0.5,
 }));
 
-const line = new THREE.Line(geometry, material);
-line.computeLineDistances();
+const mesh = new THREE.Mesh(geometry, material);
 
-console.log(line);
+console.log(mesh);
 
-export default line;
+const color = mesh.material.color;
+console.log(color.getHexString());
+console.log(color.getStyle());
+color.setStyle('blue');
+
+
+export default mesh;
