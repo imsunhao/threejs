@@ -1,18 +1,14 @@
 import * as THREE from 'three';
 
 const loader = new THREE.TextureLoader();
-const texture = loader.load('./zhuan.awebp');
-texture.wrapS = THREE.RepeatWrapping
-texture.wrapT = THREE.RepeatWrapping
-texture.repeat.set(3, 3);
+const texture = loader.load('./diqiu.awebp');
 texture.colorSpace = THREE.SRGBColorSpace;
+texture.wrapS = THREE.RepeatWrapping;
 
-
-const geometry = new THREE.PlaneGeometry(1000, 1000);
+const geometry = new THREE.SphereGeometry(100);
 
 const material = new THREE.MeshBasicMaterial({
-  map: texture,
-  aoMap: texture,
+  map: texture
 });
 
 const mesh = new THREE.Mesh(geometry, material);

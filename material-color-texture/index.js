@@ -26,6 +26,7 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(width, height)
 
 function render() {
+  mesh.material.map.offset.x += 0.001;
   renderer.render(scene, camera);
   requestAnimationFrame(render);
 }
