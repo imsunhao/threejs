@@ -1,36 +1,29 @@
 import * as THREE from 'three';
 
-// 创建点和曲线
-const p1 = new THREE.Vector2(0, 0);
-const p2 = new THREE.Vector2(100, 100);
-const line1 = new THREE.LineCurve(p1, p2);
+const pointsArr = [
+  new THREE.Vector2(0, 0),
+  new THREE.Vector2(50, 50),
+  new THREE.Vector2(20, 80),
+  new THREE.Vector2(0, 150)
+];
 
-const arc = new THREE.EllipseCurve(0, 100, 100, 100, 0, Math.PI, false);
+const geometry = new THREE.LatheGeometry(pointsArr);
 
-const p3 = new THREE.Vector2(-100, 100);
-const p4 = new THREE.Vector2(0, 0);
-const line2 = new THREE.LineCurve(p3, p4);
-
-// 创建 Shape，并添加子路径
-const shape = new THREE.Shape();
-
-// 将 line1 的起点作为 moveTo 起点
-shape.moveTo(p1.x, p1.y);
-
-// 添加线段和弧线到 shape
-line1.getPoints(10).forEach(p => shape.lineTo(p.x, p.y));
-arc.getPoints(20).forEach(p => shape.lineTo(p.x, p.y));
-line2.getPoints(10).forEach(p => shape.lineTo(p.x, p.y));
-
-// 创建几何体
-const geometry = new THREE.ShapeGeometry(shape);
-
-// 创建材质（可以用 MeshBasicMaterial 显示填充颜色）
-const material = new THREE.MeshBasicMaterial({
+const materail = new THREE.MeshLambertMaterial({
   color: new THREE.Color('pink'),
   side: THREE.DoubleSide
 });
 
-const mesh = new THREE.Mesh(geometry, material);
+const mesh = new THREE.Mesh(geometry, materail);
+
+const geometry2 = new THREE.BufferGeometry();
+geometry2.setFromPoints(pointsArr);
+const material2 = new THREE.PointsMaterial({
+  color: new THREE.Color('blue'),
+  size: 10
+});
+const points2 = new THREE.Points(geometry2, material2);
+const line2 = new THREE.Line(geometry2, new THREE.LineBasicMaterial());
+mesh.add(points2, line2);
 
 export default mesh;
